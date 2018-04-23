@@ -1,0 +1,24 @@
+{
+  "name": "electron-md-editor",
+  "version": "1.0.0",
+  "description": "This is markdown editor.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yagisuke/electron-md-editor.git"
+  },
+  "keywords": [
+    "electron",
+    "react"
+  ],
+  "author": "yagisuke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yagisuke/electron-md-editor/issues"
+  },
+  "homepage": "https://github.com/yagisuke/electron-md-editor#readme"
+}
+
