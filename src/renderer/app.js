@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import MarkDownEditorUI from './components/MarkdownEditorUI'
 
 render(
-    <div>markdown</div>,
+    <MarkDownEditorUI />,
     document.getElementById('app')
 )
