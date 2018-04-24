@@ -1,4 +1,6 @@
 yarn-error.log
 node_modules
-.tmp
 .DS_STORE
+
+// build後に生成される資材
+dist

@@ -2,9 +2,11 @@
   "name": "electron-md-editor",
   "version": "1.0.0",
   "description": "This is markdown editor.",
-  "main": "main.js",
+  "main": "dist/main/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production",
+    "dev": "webpack --watch --mode development",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -20,13 +22,20 @@
     "url": "https://github.com/yagisuke/electron-md-editor/issues"
   },
   "homepage": "https://github.com/yagisuke/electron-md-editor#readme",
-  "devDependencies": {
-    "electron": "^1.8.4"
-  },
   "dependencies": {
     "photon": "connors/photon",
     "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "webpack": "^4.6.0"
+    "react-dom": "^16.3.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "electron": "^1.8.4",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15"
   }
 }
