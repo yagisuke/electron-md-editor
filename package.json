@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/yagisuke/electron-md-editor#readme",
   "dependencies": {
+    "marked": "^0.3.19",
     "photon": "connors/photon",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
