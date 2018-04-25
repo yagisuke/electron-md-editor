@@ -1,8 +1,7 @@
 const path = require('path')
-const webpack = require('webpack')
 
 module.exports = { 
-    target: 'electron-main',
+    target: 'electron-renderer',
     node: {
         __dirname: false,
         __filename: false
@@ -15,11 +14,22 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                query: {
+                    presets: ['env', 'react']
+                }
             },
             {
                 test: /\.css$/,
-                loaders: ['style-loader', 'css-loader']
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    }
+                ]
             }
         ]
     },
