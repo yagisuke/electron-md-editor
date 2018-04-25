@@ -5,7 +5,7 @@ function Editor(props) {
     return(
         <textarea
             id='editor'
-            className={style.editor}
+            className={`${props.className} ${style.editor}`}
             value={props.value}
             onChange={props.onChange}
         />
