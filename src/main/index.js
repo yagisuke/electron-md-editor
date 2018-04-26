@@ -36,7 +36,16 @@ function openFile() {
 }
 
 function saveFile() {
-    console.log('saveFile')
+    if (!fileManger.filePath) {
+        saveAsNewFile()
+        return
+    }
+
+    mainWindow.requestText()
+    .then((text) => fileManger.overwriteFile(text))
+    .catch((error) => {
+        console.log('[ERROR][saveFile] ', error)
+    })
 }
 
 function saveAsNewFile() {
