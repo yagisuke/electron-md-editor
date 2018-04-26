@@ -1,8 +1,9 @@
 import { app } from 'electron'
 import createMainWindow from './createMainWindow'
 import setAppMenu from './setAppMenu'
-import showSaveAsNewFileDialog from './showSaveAsNewFileDialog'
 import createFileManager from './createFileManager'
+import showSaveAsNewFileDialog from './showSaveAsNewFileDialog'
+import showOpenFileDialog from './showOpenFileDialog'
 
 let mainWindow = null
 let fileManger = null
@@ -26,7 +27,12 @@ app.on('ready', () => {
 })
 
 function openFile() {
-    console.log('openFile')
+    showOpenFileDialog()
+    .then((filePath) => fileManger.readFile(filePath))
+    .then((text) => mainWindow.sendText(text))
+    .catch((error) => {
+        console.log('[ERROR][openFile] ', error)
+    })
 }
 
 function saveFile() {
@@ -37,7 +43,7 @@ function saveAsNewFile() {
     Promise.all([showSaveAsNewFileDialog(), mainWindow.requestText()])
     .then(([filePath, text]) => fileManger.saveFile(filePath, text))
     .catch((error) => {
-        console.log('[ERROR] ', error)
+        console.log('[ERROR][saveAsNewFile] ', error)
     })
 }
 
