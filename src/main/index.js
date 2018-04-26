@@ -42,7 +42,7 @@ function saveFile() {
     }
 
     mainWindow.requestText()
-    .this((text) => fileManger.overwriteFile(text))
+    .then((text) => fileManger.overwriteFile(text))
     .catch((error) => {
         console.log('[ERROR][saveFile] ', error)
     })
