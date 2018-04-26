@@ -1,3 +1,4 @@
+import { ipcRenderer } from 'electron'
 import React, { Component } from 'react'
 import Editor from './Editor'
 import Previewer from './Previewer'
@@ -12,6 +13,16 @@ class MarkDownEditorUI extends Component {
         }
 
         this.onChangeText = this.onChangeText.bind(this)
+    }
+
+    componentDidMount() {
+        ipcRenderer.on('REQUEST_TEXT', () => {
+            ipcRenderer.send('REPLY_TEXT', this.state.text)
+        })
+    }
+
+    componentWillUnmount() {
+        ipcRenderer.removeAllListeners()
     }
 
     onChangeText(e) {

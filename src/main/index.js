@@ -1,12 +1,11 @@
 import { app } from 'electron'
 import createMainWindow from './createMainWindow'
 import setAppMenu from './setAppMenu'
+import showSaveAsNewFileDialog from './showSaveAsNewFileDialog'
+import createFileManager from './createFileManager'
 
 let mainWindow = null
-
-app.on('ready', () => {
-    mainWindow = createMainWindow()
-})
+let fileManger = null
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
@@ -20,6 +19,12 @@ app.on('activate', (_e, hasVisibleWindows) => {
     }
 })
 
+app.on('ready', () => {
+    mainWindow = createMainWindow()
+    fileManger = createFileManager()
+    setAppMenu({ openFile, saveFile, saveAsNewFile, exportPDF })
+})
+
 function openFile() {
     console.log('openFile')
 }
@@ -29,14 +34,13 @@ function saveFile() {
 }
 
 function saveAsNewFile() {
-    console.log('saveAsNewFile')
+    Promise.all([showSaveAsNewFileDialog(), mainWindow.requestText()])
+    .then(([filePath, text]) => fileManger.saveFile(filePath, text))
+    .catch((error) => {
+        console.log('[ERROR] ', error)
+    })
 }
 
 function exportPDF() {
     console.log('exportPDF')
 }
-
-app.on('ready', () => {
-    mainWindow = createMainWindow()
-    setAppMenu({ openFile, saveFile, saveAsNewFile, exportPDF })
-})
