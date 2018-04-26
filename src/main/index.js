@@ -1,7 +1,8 @@
 import { app } from 'electron'
-import createMainWindow from './createMainWindow'
 import setAppMenu from './setAppMenu'
+import createMainWindow from './createMainWindow'
 import createFileManager from './createFileManager'
+import createPDFWindow from './createPDFWindow'
 import showSaveAsNewFileDialog from './showSaveAsNewFileDialog'
 import showOpenFileDialog from './showOpenFileDialog'
 
@@ -57,5 +58,11 @@ function saveAsNewFile() {
 }
 
 function exportPDF() {
-    console.log('exportPDF')
+    mainWindow.requestText()
+    .then((text) => {
+        const pdfWindow = createPDFWindow(text)
+    })
+    .catch((error) => {
+        console.log('[ERROR][exportPDF] ', error)
+    })
 }
