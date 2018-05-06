@@ -4,6 +4,7 @@
   "description": "This is markdown editor.",
   "main": "dist/main/index.js",
   "scripts": {
+    "test": "NODE_ENV=test mocha --require babel-core/register test/**/*.test.js",
     "build": "webpack --mode production",
     "watch": "webpack --watch --mode development",
     "start": "electron ."
@@ -36,6 +37,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
     "electron": "^1.8.4",
+    "mocha": "^5.1.1",
     "spectron": "^3.8.0",
     "style-loader": "^0.21.0",
     "webpack": "^4.6.0",
