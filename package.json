@@ -14,7 +14,8 @@
   },
   "keywords": [
     "electron",
-    "react"
+    "react",
+    "spectron"
   ],
   "author": "yagisuke",
   "license": "ISC",
