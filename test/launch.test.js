@@ -8,16 +8,15 @@ const app = new Application({
     args: [path.join(__dirname, '..')]
 })
 
-describe('アプリケーションの起動のテスト', function() {
-    this.timeout(10000)
-    beforeEach(function() {
+describe('アプリケーションの起動のテスト', () => {
+    beforeEach(() => {
         return app.start()
     })
-    afterEach(function() {
+    afterEach(() => {
         return app.stop()
     })
 
-    it('アプリケーションをきどうするとwindowが1つ表示される', function() {
+    it('アプリケーションをきどうするとwindowが1つ表示される', () => {
         return app.client.getWindowCount()
             .then(count => assert.equal(count, 1))
     })
