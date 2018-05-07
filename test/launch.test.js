@@ -1,15 +1,11 @@
-import { Application } from 'spectron'
-import electron from 'electron'
-import path from 'path'
 import assert from 'assert'
-
-const app = new Application({
-    path: electron,
-    args: [path.join(__dirname, '..')]
-})
+import createApplication from './createApplication.test'
 
 describe('アプリケーションの起動のテスト', () => {
+    let app
+
     beforeEach(() => {
+        app = createApplication()
         return app.start()
     })
     afterEach(() => {
