@@ -1,4 +1,4 @@
-export default class EditorPage {
+class EditorPage {
     constructor(client) {
         this.client = client;
     }
@@ -13,3 +13,5 @@ export default class EditorPage {
             .then(() => this.client.getHTML('#previewer'))
     }
 }
+
+export default EditorPage
