@@ -1,5 +1,5 @@
 import assert from 'assert'
-import createApplication from './createApplication.test'
+import createApplication from './create-application'
 
 describe('アプリケーションの起動のテスト', () => {
     let app
