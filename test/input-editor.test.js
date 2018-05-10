@@ -17,6 +17,7 @@ describe('エディタ入力のテスト', () => {
     describe('エディタにMarkdownテキストを入力する', () => {
         it('HTMLがレンダリングされる', () => {
             const page = new EditorPage(app.client)
+
             return page.inputText('# h1見出し\n## h2見出し')
                 .then(() => page.getRenderedHTML())
                 .then((html) => {
@@ -28,6 +29,16 @@ describe('エディタ入力のテスト', () => {
                     const h2 = dom.querySelector('h2')
                     assert.equal(h2.textContent, 'h2見出し')
                 })
+        })
+    })
+
+    describe('emoji記法で入力する', () => {
+        it('emojiのPNG画像がレンダリングされる', () => {
+            const page = new EditorPage(app.client)
+
+            return page.inputText(':tada')
+                .then(() => page.findEmojiElement('tada'))
+                .then((element) => assert(!!element))
         })
     })
 })
